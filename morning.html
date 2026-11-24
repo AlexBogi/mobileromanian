@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 <style>
-
+/* ===== Culori (variabile) — aceleași teme ca în pagina mare ===== */
 :root {
   --sky1: #9fdcff; --sky2: #e6fff1; --grass: #7fd08b;
   --win: #f5f8fc; --edge: #6f8db3; --text: #1b2433; --muted: #5a6b80;
@@ -50,7 +50,7 @@ body {
   color: var(--text); font-size: 17px; line-height: 1.4;
   min-height: 100vh; touch-action: manipulation;
 }
-
+/* fundalul stă fix (background-attachment: fixed nu merge bine pe Android) */
 #sky {
   position: fixed; inset: 0; z-index: -2;
   background: linear-gradient(180deg, var(--sky1) 0%, var(--sky2) 70%, var(--grass) 100%);
@@ -67,7 +67,7 @@ html[data-skin="retro"] .bubble, html[data-skin="noir"] .bubble { display: none;
 
 #app { max-width: 480px; margin: 0 auto; padding: 12px 10px 30px; }
 
-
+/* ===== Fereastra stil Windows 98 / Aero ===== */
 .win {
   background: var(--win); border: 2px solid var(--edge);
   border-radius: 6px 6px 3px 3px; margin-bottom: 14px;
@@ -96,7 +96,7 @@ h1.pix { font-size: 40px; margin: 0; line-height: 1; color: var(--accent); }
 .muted { color: var(--muted); font-size: 14px; }
 .hint { color: var(--muted); font-size: 14px; font-style: italic; }
 
-
+/* ===== Statistici ===== */
 .stats { display: flex; gap: 8px; margin-top: 12px; }
 .stat {
   flex: 1; text-align: center; background: var(--chip); border: 1px solid var(--edge);
@@ -105,7 +105,7 @@ h1.pix { font-size: 40px; margin: 0; line-height: 1; color: var(--accent); }
 .stat b { display: block; font-family: "VT323", monospace; font-size: 30px; font-weight: normal; line-height: 1; color: var(--accent); }
 .stat span { font-size: 12px; color: var(--muted); }
 
-
+/* ===== Butoane lucioase (Aero) ===== */
 .btn {
   display: block; width: 100%; min-height: 54px; margin: 8px 0; padding: 10px 14px;
   font: inherit; font-size: 18px; color: var(--text); text-align: left;
@@ -129,7 +129,18 @@ html[data-skin="neon"] .btn { box-shadow: 0 0 6px rgba(0,229,255,.35); }
 .btn.main small { color: var(--titleText); opacity: .85; }
 .tile-done { float: right; font-family: "VT323", monospace; font-size: 20px; color: var(--ok); }
 
+/* alegerea lungimii (10 / 15 / 20) */
+.lenrow { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 4px; font-size: 15px; }
+.segs { display: flex; border: 1px solid var(--edge); border-radius: 6px; overflow: hidden; flex-shrink: 0; }
+.seg {
+  font-family: "VT323", monospace; font-size: 24px; min-width: 50px; min-height: 44px; padding: 0 8px;
+  color: var(--text); background: linear-gradient(180deg, var(--btn1), var(--btn2)); border: 0; cursor: pointer;
+}
+.seg + .seg { border-left: 1px solid var(--edge); }
+.seg.on { background: linear-gradient(180deg, var(--title2), var(--title1)); color: var(--titleText); }
+html[data-skin="retro"] .segs { border-radius: 0; }
 
+/* ===== Întrebări ===== */
 .progress { display: flex; gap: 3px; margin-bottom: 12px; }
 .progress i { flex: 1; height: 8px; background: var(--chip); border: 1px solid var(--edge); border-radius: 2px; }
 .progress i.ok { background: var(--ok); }
@@ -149,7 +160,7 @@ html[data-skin="neon"] .btn { box-shadow: 0 0 6px rgba(0,229,255,.35); }
 .feedback.bad { background: var(--badBg); border-color: var(--bad); }
 .feedback b.head { font-family: "VT323", monospace; font-size: 24px; font-weight: normal; display: block; line-height: 1; margin-bottom: 4px; }
 
-
+/* cuvinte de atins (construiește / detectiv) */
 .slots { min-height: 56px; border: 2px dashed var(--edge); border-radius: 6px; padding: 6px; margin: 10px 0; background: var(--chip); }
 .tiles { display: flex; flex-wrap: wrap; gap: 7px; margin: 8px 0; }
 .tile {
@@ -169,11 +180,11 @@ input.num {
   border: 2px solid var(--edge); border-radius: 6px; background: #fff; color: #111; margin: 8px 0;
 }
 
-
+/* cuvântul zilei */
 .wotd { display: flex; align-items: center; gap: 12px; }
 .wotd .w { font-size: 30px; font-weight: bold; color: var(--accent); }
 
-
+/* badge-uri 88x31 */
 .badges { display: flex; justify-content: center; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
 .badge {
   width: 88px; height: 31px; font: 11px/1.05 "VT323", monospace; font-size: 14px;
@@ -186,7 +197,7 @@ input.num {
 .footer { text-align: center; margin-top: 8px; }
 .linkish { background: none; border: 0; color: var(--muted); font: inherit; font-size: 14px; text-decoration: underline; cursor: pointer; padding: 6px; }
 
-
+/* confetti pătrățele */
 .conf { position: fixed; top: -12px; width: 9px; height: 9px; z-index: 50; animation: fall 1.8s linear forwards; }
 @keyframes fall { to { transform: translateY(105vh) rotate(540deg); } }
 .review li { margin-bottom: 6px; }
@@ -198,7 +209,13 @@ input.num {
 <div id="app"></div>
 
 <script>
+// =====================================================================
+//  PUȚINĂ ROMÂNĂ — runde scurte pentru telefon (dimineața și seara)
+//  Stelele se adună în rj_stars, la fel ca în pagina mare.
+//  Chei noi în localStorage: rj_m_streak, rj_m_done, rj_m_sound
+// =====================================================================
 
+// ---------- DATE: vocabular (doar ce am făcut) ----------
 const WORDS = [
   ["soare","sun"],["ploaie","rain"],["vânt","wind"],["zăpadă","snow"],["nori","clouds"],["ceață","fog"],
   ["furtună","storm"],["cald","hot / warm"],["frig","cold"],["înnorat","cloudy"],["răcoros","cool"],["grade","degrees"],
@@ -227,7 +244,9 @@ const WORDS = [
   ["scrie","to write"],["face","to do / make"],["mânca","to eat"],["veni","to come"],["pleca","to leave"],["termina","to finish"]
 ];
 
-
+// ---------- DATE: verbe ----------
+// pres = prezent (eu, tu, el/ea, noi, voi, ei/ele); part = participiu; imp = baza pentru imperfect;
+// s3 = conjunctiv el/ei (să ...); subj = conjunctiv complet, doar dacă e neregulat
 const VERBS = {
   "avea":   { en: "to have",   pres: ["am","ai","are","avem","aveți","au"], part: "avut", imp: "avea", s3: "aibă" },
   "bea":    { en: "to drink",  pres: ["beau","bei","bea","bem","beți","beau"], part: "băut", imp: "bea", s3: "bea" },
@@ -262,6 +281,7 @@ const TENSES = [
 ];
 const PRONOUNS = ["eu","tu","el / ea","noi","voi","ei / ele"];
 
+// face forma verbului pentru un timp și o persoană (0–5)
 function verbForm(inf, tenseId, p) {
   const v = VERBS[inf];
   if (tenseId === "prezent") return v.pres[p];
@@ -278,7 +298,8 @@ function subjunctive(v, p) {
   return v.pres[p];
 }
 
-
+// ---------- DATE: substantive (pentru acord, acest/acel, plural) ----------
+// g = gen: m / f / n. bad = pluraluri greșite (pentru variante)
 const NOUNS = [
   { sg: "geacă", pl: "geci", g: "f", en: "jacket", bad: ["geace","gecuri"] },
   { sg: "rochie", pl: "rochii", g: "f", en: "dress", bad: ["rochiuri","rochie"] },
@@ -304,7 +325,7 @@ const NOUNS = [
   { pl: "ochelari", g: "m", en: "glasses", onlyPl: true },
   { pl: "ciorapi", g: "m", en: "socks", onlyPl: true }
 ];
-
+// adjective: m sg / f sg / m pl / f pl
 const ADJS = [
   { f: ["roșu","roșie","roșii","roșii"], en: "red" },
   { f: ["negru","neagră","negri","negre"], en: "black" },
@@ -324,7 +345,7 @@ const ADJS = [
 ];
 const GENDER_NAME = { m: "masculine", f: "feminine", n: "neuter" };
 
-
+// ---------- DATE: propoziții de completat ----------
 const GAPS = [
   { t: "Ieri ___ la magazin cu sora mea și am luat o geacă nouă.", a: "am mers", o: ["o să merg","merg"], h: "ieri (yesterday) → perfect compus" },
   { t: "Mâine ___ la bunica, pentru că e duminică.", a: "o să merg", o: ["am mers","mergeam"], h: "mâine (tomorrow) → viitor" },
@@ -361,7 +382,7 @@ const GAPS = [
   { t: "Aș ___ o cafea cu lapte, vă rog.", a: "vrea", o: ["vreau","vrut"], h: "aș + infinitive → aș vrea" }
 ];
 
-
+// ---------- DATE: detectivul (un cuvânt greșit) ----------
 const MISTAKES = [
   { s: "Ieri am mergut la magazin cu mama.", wrong: "mergut", fix: "mers", h: "merge → am mers" },
   { s: "Am o geacă negru și niște ghete albe.", wrong: "negru", fix: "neagră", h: "geacă is feminine → neagră" },
@@ -384,6 +405,7 @@ const MISTAKES = [
   { s: "Ei beau cafea și noi beau ceai.", wrong: "beau", second: true, fix: "bem", h: "noi → bem" }
 ];
 
+// ---------- DATE: construiește propoziția ----------
 const BUILDS = [
   { ro: "Ieri am citit o carte foarte frumoasă", en: "Yesterday I read a very beautiful book." },
   { ro: "Mâine o să merg la munte cu familia mea", en: "Tomorrow I'm going to the mountains with my family." },
@@ -402,7 +424,7 @@ const BUILDS = [
   { ro: "Mama mea lucrează de luni până vineri", en: "My mum works from Monday to Friday." }
 ];
 
-
+// ---------- DATE: povești scurte ----------
 const STORIES = [
   { t: "Mă numesc Ana și locuiesc într-o casă mică lângă munte. Dimineața beau o cafea pe balcon și seara citesc o carte în dormitor. Am și o pisică neagră. Ea doarme toată ziua pe canapea.",
     q: "Unde doarme pisica?", a: "Pe canapea", o: ["Pe balcon","În dormitor"], h: "Ea doarme toată ziua pe canapea. (couch)" },
@@ -424,28 +446,28 @@ const STORIES = [
     q: "Unde au fost weekendul trecut?", a: "Acasă", o: ["La munte","La magazin"], h: "…am fost acasă (at home) cu părinții mei." }
 ];
 
-
+// ---------- DATE: numere și ora ----------
 const NUM_WORDS = { 1: "unu", 2: "doi", 3: "trei", 4: "patru", 5: "cinci", 6: "șase", 7: "șapte", 8: "opt", 9: "nouă",
   10: "zece", 11: "unsprezece", 12: "doisprezece", 20: "douăzeci", 30: "treizeci", 100: "o sută" };
 const HOUR_WORDS = ["", "unu", "două", "trei", "patru", "cinci", "șase", "șapte", "opt", "nouă", "zece", "unsprezece"];
 const MINUTE_WORDS = { 0: "", 5: " și cinci", 10: " și zece", 15: " și un sfert", 20: " și douăzeci", 30: " și jumătate" };
 const SHOP_ITEMS = ["Geaca", "Rochia", "Tricoul", "Geanta", "Fusta", "Ciocolata", "Brânza", "Căciula", "Rucsacul", "Chitara"];
 
-
+// numărul în cuvinte (pentru prețuri în lei)
 function numberToWords(n) {
   if (NUM_WORDS[n] && n !== 1) return NUM_WORDS[n];
   const tens = Math.floor(n / 10) * 10;
   return NUM_WORDS[tens] + " și " + NUM_WORDS[n % 10];
 }
 
-
+// ---------- Ajutoare mici ----------
 function escapeHtml(s) {
   return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 }
 function removeAccents(s) {
   return String(s).toLowerCase().replace(/[ăâ]/g, "a").replace(/î/g, "i").replace(/[șş]/g, "s").replace(/[țţ]/g, "t");
 }
-
+// generator de numere „aleatoare” care dă aceleași rezultate pentru aceeași zi
 function makeRandom(seedText) {
   let h = 2166136261;
   for (let i = 0; i < seedText.length; i++) { h ^= seedText.charCodeAt(i); h = Math.imul(h, 16777619); }
@@ -467,7 +489,7 @@ function shuffle(list) {
   }
   return copy;
 }
-
+// ia n elemente diferite dintr-o listă
 function pickSome(list, n) { return shuffle(list).slice(0, n); }
 function unique(list) { return list.filter(function (x, i) { return list.indexOf(x) === i; }); }
 
@@ -477,7 +499,7 @@ function todayKey(offsetDays) {
   return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
 }
 
-
+// ---------- localStorage ----------
 function loadValue(key, fallback) {
   try {
     const raw = localStorage.getItem(key);
@@ -488,7 +510,7 @@ function loadValue(key, fallback) {
 function saveValue(key, value) {
   try { localStorage.setItem(key, JSON.stringify(value)); } catch (e) {}
 }
-
+// stelele sunt comune cu pagina mare (rj_stars)
 function getStars() {
   let raw = null;
   try { raw = localStorage.getItem("rj_stars"); } catch (e) {}
@@ -499,7 +521,7 @@ function addStars(n) {
   try { localStorage.setItem("rj_stars", String(getStars() + n)); } catch (e) {}
 }
 
-
+// ---------- Tema (citită din pagina mare, rj_skin) ----------
 function applySkin() {
   let raw = "";
   try { raw = String(localStorage.getItem("rj_skin") || "").toLowerCase(); } catch (e) {}
@@ -511,7 +533,7 @@ function applySkin() {
   else if (raw.indexOf("noir") >= 0) skin = "noir";
   document.documentElement.setAttribute("data-skin", skin);
 }
-
+// bule (sau stele, în funcție de temă) în fundal
 function makeDecor() {
   const box = document.getElementById("decor");
   let html = "";
@@ -525,7 +547,7 @@ function makeDecor() {
   box.innerHTML = html;
 }
 
-
+// ---------- Sunet și vibrație ----------
 let audioCtx = null;
 function beep(good) {
   if (!loadValue("rj_m_sound", true)) return;
@@ -544,7 +566,7 @@ function beep(good) {
   if (!good && navigator.vibrate) navigator.vibrate(120);
 }
 
-
+// ---------- Fereastra ----------
 function makeWindow(title, inner, closeAction) {
   return '<div class="win"><div class="titlebar"><span>' + escapeHtml(title) + '</span>' +
     '<div class="tb-btns"><span>_</span><span>□</span><span class="x" ' + (closeAction ? 'onclick="' + closeAction + '"' : "") + '>x</span></div></div>' +
@@ -555,7 +577,11 @@ function render(html) {
   window.scrollTo(0, 0);
 }
 
-
+// =====================================================================
+//  GENERATOARE DE ÎNTREBĂRI — fiecare întoarce un obiect simplu
+//  kind: "mc" (alegi un răspuns), "num" (scrii un număr),
+//        "build" (pui cuvintele în ordine), "detect" (atingi greșeala)
+// =====================================================================
 
 function makeVocab(reverse) {
   const w = pick(WORDS);
@@ -573,6 +599,7 @@ function makeVerb() {
   const inf = pick(tense.verbs);
   const p = Math.floor(rand() * 6);
   const answer = verbForm(inf, tense.id, p);
+  // variante greșite: alte persoane (același timp) + aceeași persoană (alt timp)
   let wrong = [];
   for (let i = 0; i < 6; i++) wrong.push(verbForm(inf, tense.id, i));
   TENSES.forEach(function (t) { if (t.verbs.indexOf(inf) >= 0) wrong.push(verbForm(inf, t.id, p)); });
@@ -591,7 +618,7 @@ function makeGap() {
     answer: g.a, options: [g.a].concat(g.o), explain: g.t.replace("___", g.a) + "  (" + g.h + ")" };
 }
 
-
+// forma adjectivului: 0 m sg, 1 f sg, 2 m pl, 3 f pl (neutrul: ca m la singular, ca f la plural)
 function formIndex(g, plural) {
   if (!plural) return g === "f" ? 1 : 0;
   return g === "m" ? 2 : 3;
@@ -672,7 +699,7 @@ function makeBuild() {
 function makeDetect() {
   const m = pick(MISTAKES);
   const words = m.s.split(" ");
-  
+  // găsește poziția cuvântului greșit (al doilea, dacă apare de două ori)
   let wrongIndex = -1, seen = 0;
   words.forEach(function (w, i) {
     if (w.replace(/[.,!?]/g, "") === m.wrong) {
@@ -683,27 +710,46 @@ function makeDetect() {
   return { kind: "detect", label: "Detectivul", words: words, wrongIndex: wrongIndex, fix: m.fix, explain: m.h };
 }
 
-
+// ---------- rețetele rundelor ----------
+// Câte întrebări din fiecare fel, pentru fiecare lungime (10 / 15 / 20).
+// Ex.: [makeVerb, 2, 3, 4] = 2 verbe în runda de 10, 3 în cea de 15, 4 în cea de 20.
+const ROUND_LENGTHS = [10, 15, 20];
+function makeVocabRo() { return makeVocab(false); }
+function makeVocabEn() { return makeVocab(true); }
 const SESSIONS = {
-  morning: { title: "Runda de dimineață", plan: [
-    function () { return makeVocab(false); }, function () { return makeVocab(false); }, function () { return makeVocab(true); },
-    makeVerb, makeVerb, makeGap, makeGap, makeTime, makeNumber, makeStory ] },
-  night: { title: "Runda de seară", plan: [
-    makeAgreement, makeAgreement, makeThisThat, makePlural, makeBuild, makeBuild,
-    makeDetect, makeDetect, makeVerb, makeStory ] },
-  free: { title: "Exersează liber", plan: [] }
+  morning: { title: "Runda de dimineață", recipe: [
+    [makeVocabRo, 2, 3, 4], [makeVocabEn, 1, 2, 2], [makeVerb, 2, 3, 4], [makeGap, 2, 3, 4],
+    [makeTime, 1, 1, 2], [makeNumber, 1, 2, 2], [makeStory, 1, 1, 2] ] },
+  night: { title: "Runda de seară", recipe: [
+    [makeAgreement, 2, 3, 4], [makeThisThat, 1, 2, 2], [makePlural, 1, 1, 2], [makeBuild, 2, 3, 4],
+    [makeDetect, 2, 3, 4], [makeVerb, 1, 2, 2], [makeStory, 1, 1, 2] ] },
+  free: { title: "Exersează liber", recipe: [] }
 };
 const ALL_MAKERS = [function () { return makeVocab(rand() < 0.5); }, makeVerb, makeGap, makeTime, makeNumber, makeStory,
   makeAgreement, makeThisThat, makePlural, makeBuild, makeDetect];
 
+// lungimea aleasă (salvată în rj_m_length)
+function getLength() {
+  const n = loadValue("rj_m_length", 10);
+  return ROUND_LENGTHS.indexOf(n) >= 0 ? n : 10;
+}
+function setLength(n) { saveValue("rj_m_length", n); showHome(); }
 
-function buildQuestions(kind) {
-  let plan = SESSIONS[kind].plan;
-  if (kind === "free") { plan = []; for (let i = 0; i < 8; i++) plan.push(pick(ALL_MAKERS)); }
+// construiește lista de întrebări fără repetiții
+function buildQuestions(kind, length) {
+  let plan = [];
+  if (kind === "free") {
+    for (let i = 0; i < length; i++) plan.push(pick(ALL_MAKERS));
+  } else {
+    const column = ROUND_LENGTHS.indexOf(length) + 1;
+    SESSIONS[kind].recipe.forEach(function (row) {
+      for (let i = 0; i < row[column]; i++) plan.push(row[0]);
+    });
+  }
   const list = [], seen = {};
   plan.forEach(function (maker) {
     let q, tries = 0;
-    do { q = maker(); tries++; } while (seen[questionId(q)] && tries < 20);
+    do { q = maker(); tries++; } while (seen[questionId(q)] && tries < 30);
     seen[questionId(q)] = true;
     if (q.kind === "mc") q.options = shuffle(unique(q.options));
     if (q.kind === "build") q.tiles = shuffle(q.words.map(function (w, i) { return { w: w, i: i }; }));
@@ -713,6 +759,9 @@ function buildQuestions(kind) {
 }
 function questionId(q) { return q.kind + "|" + (q.prompt || q.answerText || q.words.join(" ")); }
 
+// =====================================================================
+//  ECRANUL PRINCIPAL
+// =====================================================================
 function greeting() {
   const h = new Date().getHours();
   if (h < 5) return "Noapte bună!";
@@ -727,7 +776,7 @@ function getDone() {
 }
 function getStreak() {
   const s = loadValue("rj_m_streak", { count: 0, last: "", best: 0 });
-  
+  // dacă a sărit o zi, seria se pierde (dar recordul rămâne)
   if (s.last !== todayKey() && s.last !== todayKey(-1)) s.count = 0;
   return s;
 }
@@ -739,6 +788,12 @@ function showHome() {
   const streak = getStreak();
   const sound = loadValue("rj_m_sound", true);
   const isEvening = new Date().getHours() >= 15;
+  const length = getLength();
+  const minutes = { 10: "~3 min", 15: "~5 min", 20: "~7 min" }[length];
+  let lengthButtons = "";
+  ROUND_LENGTHS.forEach(function (n) {
+    lengthButtons += '<button class="seg ' + (n === length ? "on" : "") + '" onclick="setLength(' + n + ')">' + n + '</button>';
+  });
 
   function tile(kind, sub) {
     const isDone = done[kind];
@@ -758,15 +813,16 @@ function showHome() {
     '</div>');
 
   html += makeWindow("runde.txt",
-    tile("morning", "vocabular, verbe, ora, numere · ~3 min") +
-    tile("night", "acord, plural, propoziții, detectiv · ~3 min") +
-    '<button class="btn" onclick="startSession(\'free\')">Exersează liber<small>8 întrebări la întâmplare (random) · fără stele</small></button>');
+    '<div class="lenrow"><span>Câte întrebări? <span class="hint">(round length)</span></span><div class="segs">' + lengthButtons + '</div></div>' +
+    tile("morning", "vocabular, verbe, ora, numere · " + length + " întrebări · " + minutes) +
+    tile("night", "acord, plural, propoziții, detectiv · " + length + " întrebări · " + minutes) +
+    '<button class="btn" onclick="startSession(\'free\')">Exersează liber<small>' + length + ' întrebări la întâmplare (random) · fără stele</small></button>');
 
   html += makeWindow("cuvântul_zilei.txt",
     '<div class="wotd"><div class="w">' + escapeHtml(w[0]) + '</div><div class="muted">(' + escapeHtml(w[1]) + ')</div></div>');
 
   html += '<div class="footer">' +
-    '<div class="badges"><div class="badge b1">100% ROMÂNĂ</div><div class="badge b2">fon</div><div class="badge b3"> wubi virus</div></div>' +
+    '<div class="badges"><div class="badge b1">100% ROMÂNĂ</div><div class="badge b2">MERGE PE TELEFON</div><div class="badge b3">ZERO REGRETE</div></div>' +
     '<button class="linkish" onclick="toggleSound()">Sunet: ' + (sound ? "pornit" : "oprit") + '</button>' +
     '<a class="linkish" href="gamesies.html">Toate jocurile →</a>' +
     '</div>';
@@ -774,15 +830,19 @@ function showHome() {
 }
 function toggleSound() { saveValue("rj_m_sound", !loadValue("rj_m_sound", true)); showHome(); }
 
-
+// =====================================================================
+//  RUNDA
+// =====================================================================
 let session = null;
 
 function startSession(kind) {
   const done = getDone();
   const alreadyDone = kind === "free" || done[kind];
-  rand = makeRandom(alreadyDone ? String(Date.now()) : kind + todayKey());
+  // aceeași zi = aceleași întrebări; dacă o refaci sau e liberă, întrebări noi
+  const length = getLength();
+  rand = makeRandom(alreadyDone ? String(Date.now()) : kind + length + todayKey());
   session = {
-    kind: kind, title: SESSIONS[kind].title, questions: buildQuestions(kind),
+    kind: kind, title: SESSIONS[kind].title, questions: buildQuestions(kind, length),
     index: 0, results: [], retry: [], inRetry: false, givesStars: !alreadyDone, mistakes: []
   };
   showQuestion();
@@ -853,7 +913,7 @@ function confirmQuit() {
 const PRAISE = ["Bravo!", "Corect!", "Exact!", "Super!", "Foarte bine!", "Perfect!"];
 const OOPS = ["Nu chiar…", "Aproape!", "Hmm, nu.", "Nu e bine."];
 
-
+// arată mesajul de după răspuns + butonul „Mai departe”
 function showFeedback(good, text) {
   beep(good);
   const q = currentQuestion();
@@ -893,7 +953,7 @@ function answerNum() {
   showFeedback(value === q.answer, q.explain);
 }
 
-
+// --- construiește propoziția ---
 function drawBuild() {
   const q = currentQuestion();
   let slots = "", tiles = "";
@@ -938,7 +998,7 @@ function checkBuild() {
   showFeedback(good, q.answerText);
 }
 
-
+// --- detectivul ---
 function answerDetect(i) {
   const q = currentQuestion();
   const tiles = document.querySelectorAll("#dwords .tile");
@@ -956,7 +1016,7 @@ function nextQuestion() {
   session.index++;
   const list = session.inRetry ? session.retry : session.questions;
   if (session.index < list.length) { showQuestion(); return; }
- 
+  // după runda principală: încă o dată întrebările greșite
   if (!session.inRetry && session.retry.length > 0) {
     session.inRetry = true; session.index = 0;
     session.retry = session.retry.map(function (q) { return reshuffle(q); });
@@ -973,17 +1033,20 @@ function reshuffle(q) {
   return q;
 }
 
+// =====================================================================
+//  REZULTATE
+// =====================================================================
 function showResults() {
   const correct = session.results.filter(Boolean).length;
   const total = session.results.length;
   let stars = 0;
   if (session.givesStars) {
-    
+    // +1 stea la fiecare 2 răspunsuri corecte, +2 pentru că ai terminat
     stars = Math.floor(correct / 2) + 2;
     addStars(stars);
     const done = getDone(); done[session.kind] = true; saveValue("rj_m_done", done);
   }
- 
+  // seria de zile: contează orice rundă terminată azi
   const streak = getStreak();
   if (streak.last !== todayKey()) {
     streak.count = streak.count + 1;
@@ -1025,6 +1088,7 @@ function confetti() {
   }
 }
 
+// ---------- pornire ----------
 applySkin();
 makeDecor();
 showHome();
