@@ -609,7 +609,7 @@ function makeVerb() {
   return { kind: "mc", label: "Verbe · " + tense.name,
     prompt: '<span class="big">' + escapeHtml(pronoun) + '</span> <span class="blank">&nbsp;</span>' +
       '<div class="muted">a ' + escapeHtml(inf) + ' (' + escapeHtml(VERBS[inf].en) + ') · <b>' + escapeHtml(tense.name) + '</b></div>',
-    answer: answer, options: options, explain: pronoun + " " + answer + " — (" + tense.hint + ")" };
+    answer: answer, options: options, explain: pronoun + " " + answer + " - (" + tense.hint + ")" };
 }
 
 function makeGap() {
@@ -635,7 +635,7 @@ function makeAgreement() {
   return { kind: "mc", label: "Acord",
     prompt: escapeHtml(article + " " + word) + ' <span class="blank">&nbsp;</span><div class="hint">(' + escapeHtml(adj.en) + ')</div>',
     answer: answer, options: options,
-    explain: article + " " + word + " " + answer + " — " + word + " is " + GENDER_NAME[noun.g] + (plural ? " plural" : " singular") };
+    explain: article + " " + word + " " + answer + " - " + word + " is " + GENDER_NAME[noun.g] + (plural ? " plural" : " singular") };
 }
 
 function makeThisThat() {
@@ -648,7 +648,7 @@ function makeThisThat() {
   return { kind: "mc", label: isThis ? "Acest / această" : "Acel / acea",
     prompt: '<span class="blank">&nbsp;</span> ' + escapeHtml(word) + '<div class="hint">(' + (isThis ? "this / these" : "that / those") + ')</div>',
     answer: answer, options: set.slice(),
-    explain: answer + " " + word + " — " + word + " is " + GENDER_NAME[noun.g] + (plural ? " plural" : " singular") };
+    explain: answer + " " + word + " - " + word + " is " + GENDER_NAME[noun.g] + (plural ? " plural" : " singular") };
 }
 
 function makePlural() {
@@ -1021,7 +1021,7 @@ function nextQuestion() {
     session.inRetry = true; session.index = 0;
     session.retry = session.retry.map(function (q) { return reshuffle(q); });
     render(makeWindow(session.title,
-      '<h1 class="pix">A doua șansă</h1><p>Mai încercăm o dată întrebările greșite. <span class="hint">(no stars, just practice)</span></p>' +
+      '<h1 class="pix">A doua șansă</h1><p>Mai încercăm o dată întrebările greșite. <span class="hint">(practice wrong answers)</span></p>' +
       '<button class="btn main" onclick="showQuestion()">Hai!</button>'));
     return;
   }
